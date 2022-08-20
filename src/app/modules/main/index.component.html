@@ -39,12 +39,12 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <mat-nav-list>
-                                <a mat-list-item routerLink="/property/add">
+                                <a mat-list-item routerLink="/property/add" (click)="snav.close();">
                                     <mat-icon>add</mat-icon>
                                     Add property
                                 </a>
 
-                                <a mat-list-item routerLink="/property/list">
+                                <a mat-list-item routerLink="/property/list" (click)="snav.close();">
                                     <mat-icon>list</mat-icon>
                                     List property
                                 </a>

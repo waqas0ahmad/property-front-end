@@ -5,6 +5,8 @@ import { PropertyRoutingModule } from './property-routing.module';
 import { IndexComponent } from './index.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { ListPropertyComponent } from './list-property/list-property.component';
+import { SharedModule } from '../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ListPropertyComponent } from './list-property/list-property.component';
   ],
   imports: [
     CommonModule,
-    PropertyRoutingModule
+    PropertyRoutingModule,
+    SharedModule,
+    HttpClientModule
   ]
 })
 export class PropertyModule { }

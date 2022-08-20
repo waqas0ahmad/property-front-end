@@ -49,11 +49,12 @@ import {OverlayModule} from '@angular/cdk/overlay';
 
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
     HttpClientModule,
-
+FormsModule,
 
     A11yModule,
     CdkAccordionModule,
@@ -146,7 +147,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    FormsModule
   ],
   providers:[ApiService]
 })

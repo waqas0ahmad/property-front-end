@@ -1,1 +1,100 @@
-<p>add-property works!</p>
+<div class="container">
+    <h1 class="d-flex justify-content-between mb-4">Add Property
+
+        <a routerLink="/property/list" class="btn btn-link">View all</a>
+    </h1>
+    <mat-card>
+        <form (ngSubmit)="onPropertySubmit()">
+            <div class="row">
+                <div class="col-12"> 
+                    <label class="control-label">Property Images</label>                    
+                    <!-- <mat-progress-bar
+  *ngIf="upload"
+  [mode]="upload.state == 'PENDING' ? 'buffer' : 'determinate'"
+  [value]="upload.progress"
+>
+</mat-progress-bar> -->
+                    <input placeholder="images" required type="file" (change)="onImagesChange($event)" multiple class="mb-3 form-control">
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+
+                        <label class="control-label">Property Type</label>
+                        <select class="form-control" [(ngModel)]="model.propertyType" name="propertyType">
+                            <option value="mature">Mature</option>
+                            <option value="development">Developmental</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Total Area in sqft</label>
+                        <input placeholder="Total area (sqft)" required type="number" class="form-control" 
+                        [(ngModel)]="model.area" name="area"
+                        >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Name</label>
+                        <input placeholder="Name" required class="form-control"
+                        [(ngModel)]="model.name" name="name"
+                        >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Total Portfolio</label>
+                        <input placeholder="Total Portfolio" required type="number" class="form-control"
+                        [(ngModel)]="model.totalPortfolio" name="totalPortfolio"
+                        >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Assets Under Management</label>
+                        <input placeholder="Assets Under Management" required type="number" class="form-control"
+                        [(ngModel)]="model.assetsUnderManagement" name="assetsUnderManagement"
+                        >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Hold Period</label>
+                        <input placeholder="Hold Period" required type="number" class="form-control"
+                        [(ngModel)]="model.holdPeriod" name="holdPeriod"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">Location</label>
+                        <input placeholder="Location" required class="form-control"
+                        [(ngModel)]="model.location" name="location"
+                        >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="control-label">State</label>
+                        <input placeholder="State" required class="form-control"
+                        [(ngModel)]="model.state" name="state"
+                        >
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label class="control-label">Details</label>
+                        <textarea placeholder="Details" class="form-control"
+                        [(ngModel)]="model.details" name="details"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="col-12 text-end">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>
