@@ -48,8 +48,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
 // import {DialogModule} from '@angular/cdk/dialog';
 
 import { ApiService } from './services/api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ApiInterceptor } from 'src/app/utils/interceptors/api.interceptor';
 @NgModule({
   declarations: [],
   imports: [
@@ -150,6 +151,7 @@ FormsModule,
     ScrollingModule,
     FormsModule
   ],
-  providers:[ApiService]
+  providers:[ApiService,  
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
 })
 export class SharedModule { }

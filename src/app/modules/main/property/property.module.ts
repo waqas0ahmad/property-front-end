@@ -6,7 +6,8 @@ import { IndexComponent } from './index.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { ListPropertyComponent } from './list-property/list-property.component';
 import { SharedModule } from '../../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptor } from 'src/app/utils/interceptors/api.interceptor';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     PropertyRoutingModule,
     SharedModule,
     HttpClientModule
-  ]
+  ],
+  providers:[ { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }]
 })
 export class PropertyModule { }

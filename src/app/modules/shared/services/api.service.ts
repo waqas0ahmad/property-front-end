@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpProgressEvent, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, scan } from 'rxjs';
+import { Router } from '@angular/router';
+import { map, Observable, scan } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../models/api-response.model';
 import { Upload } from '../models/interfaces';
@@ -10,10 +11,16 @@ import { Upload } from '../models/interfaces';
 })
 export class ApiService {
   apiUrl:string = environment.apiUrl;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
   getCall<T>(url:string):Observable<ApiResponse<T>>{
-    return this.http.get<ApiResponse<T>>(this.apiUrl+url);
+    return this.http.get<ApiResponse<T>>(this.apiUrl+url).pipe(map(response=>{ 
+      if(response.status === 401){
+        this.router.navigate(['/un-authorized']);
+        return new ApiResponse();
+      }
+      return response
+    }));
   }
 
   postCall<T>(url:string,data:any):Observable<ApiResponse<T>>{

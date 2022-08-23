@@ -1,0 +1,22 @@
+<div class="row mb-3">
+    <div class="col-10">
+        <label>Search text</label>
+        <input type="text" class="form-control">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary btn-block mt-3   ">Search</button>
+    </div>
+</div>
+<div class="row" *ngIf="propertiesList">    
+    <div class="col-3" *ngFor="let p of propertiesList">
+        <div class="card" style="width: 18rem;">
+            <img [src]="env+p.images[0].url" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title mb-1">{{p.location}},{{p.state}}</h5>
+              <h3>{{p.propertyName}}</h3>
+              <p class="card-text">{{p.details}}</p>
+              <a href="#" class="btn btn-primary">Invest</a>
+            </div>
+          </div>
+    </div>
+</div>

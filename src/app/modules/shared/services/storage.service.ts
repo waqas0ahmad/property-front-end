@@ -16,4 +16,7 @@ export class StorageService {
     localStorage.clear();
     this.router.navigate(['/account']);
   }
+  getToken(){
+    return localStorage.getItem("token");
+  }
 }

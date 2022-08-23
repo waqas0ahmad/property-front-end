@@ -13,22 +13,26 @@ import { LoginRequestModel } from '../models/request.models';
 })
 export class LoginComponent implements OnInit {
   model: LoginRequestModel;
+  routes = { 'admin': '/', 'user': '/home' }
   constructor(
     private api: ApiService,
-    private storage:StorageService,
+    private storage: StorageService,
     private router: Router
-  ) { 
+  ) {
     this.model = new LoginRequestModel();
   }
 
   ngOnInit(): void {
   }
-  loginFormSubmit(f:NgForm){
-    if(f.valid){
-      this.api.postCall('account/login',this.model).subscribe((res:ApiResponse<any>)=>{
-        if(res.status == 200){
+  loginFormSubmit(f: NgForm) {
+    if (f.valid) {
+      this.api.postCall('account/login', this.model).subscribe((res: ApiResponse<any>) => {
+        if (res.status == 200) {
           this.storage.addLogin(res.data);
-          this.router.navigate(['/']);
+          if (res.data.type == 'admin')
+            this.router.navigate(['/admin']);
+          else
+            this.router.navigate(['/'])
         }
       })
     }

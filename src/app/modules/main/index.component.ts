@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
     // sc.src = "/assets/js/pages/dashboards/dashboard1.js";
     // document.body.appendChild(sc);
   }
-  onLogout(){
+  onLogoutClick(){
     this.storage.removeLogin();
   }
 }
