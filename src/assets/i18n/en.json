@@ -4,6 +4,7 @@
     },
     "account":{
         "login":{
+            "title":"Account Login",
             "submit":"Submit"
         },
         "create":{
